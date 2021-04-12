@@ -9,13 +9,14 @@ import json
 
 # 用户主页， 获取方法， 点开该用户的右上角三个点->分享->复制链接
 
-user_url = "https://aid.im/ZprX"
-user_url = "https://aid.im/OADJ"
+user_url = "https://v.douyin.com/e62AuTG"
+# user_url = "https://aid.im/OADJ"
 tmp_dir = "tmp" # 该文件夹不上传到git
 
 def get_video():
     headers = {
-        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1'
+        # 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1'
+        'User-Agent': "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_3 like Mac OS X; Linux; Android 8.0; Pixel 4 Build/NOBUILD; Nexus 10 Build/N4F26I; Nexus 4 Build/NOBUILD; ${RANDOM_STRING}) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/34.0.1847.114 Mobile/14G60 Safari/604.1"
     }
     
     url = "https://www.iesdouyin.com/web/api/v2/aweme/post/?sec_uid="
@@ -48,7 +49,6 @@ def get_video():
             length = len(json_type["aweme_list"])
             if length != 0:
                 print("总共 %d 个" % length)
-                continue
                 i = 1
                 # 获取所有视频地址
                 for item in json_type["aweme_list"]:
@@ -77,6 +77,7 @@ def get_video():
                         i+=1
                         
                 print("已经完成，共 %d 个" % i)
+                os._exit(0)
                         
 
 if __name__ == '__main__':
